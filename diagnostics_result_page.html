@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Диагностика готова</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+            padding: 50px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #444;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 1.2em;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ваша диагностика</h1>
+        <div class="result" id="result">Загрузка результата...</div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const result = urlParams.get('result');
+        const output = document.getElementById('result');
+        if (result) {
+            output.textContent = decodeURIComponent(result.replace(/\+/g, ' '));
+        } else {
+            output.textContent = "Результат не найден. Пожалуйста, вернитесь и попробуйте снова.";
+        }
+    </script>
+</body>
+</html>
